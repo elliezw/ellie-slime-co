@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ellie's Slime Company</title>
+    <style>
+        /* --- CSS STYLES --- */
+        
+        :root {
+            /* Theme Colors */
+            --primary-pink: #ff85a2;
+            --light-pink: #fbe7e9;
+            --dark-pink: #c75b7a;
+            --white: #ffffff;
+            --text-color: #333;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--light-pink);
+            color: var(--text-color);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+
+        /* Header & Navigation */
+        header {
+            background-color: var(--primary-pink);
+            color: var(--white);
+            padding: 2rem;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+        }
+
+        header h1 {
+            margin: 0;
+            font-size: 2.5rem;
+            letter-spacing: 2px;
+        }
+
+        header p {
+            font-size: 1.2rem;
+            margin-top: 10px;
+        }
+
+        /* Container for Main Content */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        /* Product Grid */
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        /* Product Card Styling */
+        .product-card {
+            background: var(--white);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary-pink);
+        }
+
+        .product-image-placeholder {
+            width: 100%;
+            height: 250px;
+            background-color: #ddd;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+        /* If you use real images, use this class instead of the placeholder div */
+        .product-img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+
+        .product-info {
+            padding: 1.5rem;
+            text-align: center;
+        }
+
+        .product-title {
+            color: var(--dark-pink);
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .product-desc {
+            font-size: 0.95rem;
+            color: #666;
+            margin-bottom: 1rem;
+        }
+
+        .price {
+            font-size: 1.25rem;
+            font-weight: bold;
+            color: var(--dark-pink);
+            display: block;
+            margin-bottom: 1rem;
+        }
+
+        .buy-btn {
+            background-color: var(--primary-pink);
+            color: var(--white);
+            padding: 10px 20px;
+            border: none;
+            border-radius: 25px;
+            font-size: 1rem;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background-color 0.3s;
+        }
+
+        .buy-btn:hover {
+            background-color: var(--dark-pink);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 2rem;
+            background-color: var(--dark-pink);
+            color: var(--white);
+            margin-top: 3rem;
+        }
+
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Ellie's Slime Company</h1>
+        <p>Premium Homemade Slimes for Everyone!</p>
+    </header>
+
+    <div class="container">
+        <h2 style="text-align: center; color: var(--dark-pink); margin-bottom: 2rem;">Our Collection</h2>
+        
+        <div class="product-grid">
+
+            <div class="product-card">
+                <img src="https://via.placeholder.com/400x300/ffb7b2/ffffff?text=Cotton+Candy+Dream" alt="Cotton Candy Slime" class="product-img">
+                <div class="product-info">
+                    <h3 class="product-title">Cotton Candy Dream</h3>
+                    <p class="product-desc">A fluffy, cloud slime scented like sweet spun sugar. Blue and pink swirl.</p>
+                    <span class="price">$12.00</span>
+                    <a href="mailto:ellie@example.com?subject=Order: Cotton Candy Dream" class="buy-btn">Order Now</a>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src="https://via.placeholder.com/400x300/e2f0cb/ffffff?text=Mint+Chip+Crunch" alt="Mint Chip Slime" class="product-img">
+                <div class="product-info">
+                    <h3 class="product-title">Mint Chip Crunch</h3>
+                    <p class="product-desc">Glossy green slime with black foam beads for a perfect crunchy texture.</p>
+                    <span class="price">$14.00</span>
+                    <a href="mailto:ellie@example.com?subject=Order: Mint Chip Crunch" class="buy-btn">Order Now</a>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src="https://via.placeholder.com/400x300/b5ead7/ffffff?text=Ocean+Breeze" alt="Ocean Slime" class="product-img">
+                <div class="product-info">
+                    <h3 class="product-title">Ocean Breeze</h3>
+                    <p class="product-desc">Clear blue slime with fishbowl beads and glitter. Scented like fresh rain.</p>
+                    <span class="price">$13.50</span>
+                    <a href="mailto:ellie@example.com?subject=Order: Ocean Breeze" class="buy-btn">Order Now</a>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src="https://via.placeholder.com/400x300/c7ceea/ffffff?text=Grape+Soda+Pop" alt="Grape Slime" class="product-img">
+                <div class="product-info">
+                    <h3 class="product-title">Grape Soda Pop</h3>
+                    <p class="product-desc">A fizzy texture with purple slushie beads. Smells exactly like grape soda!</p>
+                    <span class="price">$12.00</span>
+                    <a href="mailto:ellie@example.com?subject=Order: Grape Soda Pop" class="buy-btn">Order Now</a>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src="https://via.placeholder.com/400x300/ffdac1/ffffff?text=Peaches+n+Cream" alt="Peach Slime" class="product-img">
+                <div class="product-info">
+                    <h3 class="product-title">Peaches 'n Cream</h3>
+                    <p class="product-desc">Super buttery texture perfect for spreading. Light peach scent.</p>
+                    <span class="price">$15.00</span>
+                    <a href="mailto:ellie@example.com?subject=Order: Peaches n Cream" class="buy-btn">Order Now</a>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img src="https://via.placeholder.com/400x300/ffffd8/ffffff?text=Lemon+Meringue" alt="Lemon Slime" class="product-img">
+                <div class="product-info">
+                    <h3 class="product-title">Lemon Meringue</h3>
+                    <p class="product-desc">Yellow butter slime with a white clay topping you can mix in yourself.</p>
+                    <span class="price">$16.00</span>
+                    <a href="mailto:ellie@example.com?subject=Order: Lemon Meringue" class="buy-btn">Order Now</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Ellie's Slime Company. All rights reserved.</p>
+        <p>Follow us on Instagram @ElliesSlimes</p>
+    </footer>
+
+</body>
+</html>
