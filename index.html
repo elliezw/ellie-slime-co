@@ -5,208 +5,168 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ellie's Slime Company</title>
     <style>
-        /* --- CSS STYLES --- */
-        
-        :root {
-            /* Theme Colors */
-            --primary-pink: #ff85a2;
-            --light-pink: #fbe7e9;
-            --dark-pink: #c75b7a;
-            --white: #ffffff;
-            --text-color: #333;
+        :root{
+            --bg:#f7f7f8;
+            --panel:#ffffff;
+            --muted:#6b7280;
+            --accent:#b37a00;
+            --accent-2:#e76f8a;
+            --text:#0f172a;
+            --radius:14px;
+            --container:1200px;
         }
 
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: var(--light-pink);
-            color: var(--text-color);
-            margin: 0;
-            padding: 0;
-            line-height: 1.6;
+        /* Reset & layout */
+        *{box-sizing:border-box}
+        html,body{height:100%}
+        body{
+            margin:0;
+            font-family: Inter, ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+            background:var(--bg);
+            color:var(--text);
+            -webkit-font-smoothing:antialiased;
+            -moz-osx-font-smoothing:grayscale;
+            line-height:1.45;
         }
 
-        /* Header & Navigation */
-        header {
-            background-color: var(--primary-pink);
-            color: var(--white);
-            padding: 2rem;
-            text-align: center;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-        }
+        .container{max-width:var(--container);margin:0 auto;padding:0.5rem}
+        .section-title{color:var(--accent-2);text-align:center;margin-bottom:1.5rem;font-size:1.5rem;font-weight:700}
 
-        header h1 {
-            margin: 0;
-            font-size: 2.5rem;
-            letter-spacing: 2px;
-        }
+        /* Header / Topbar */
+        header{background:linear-gradient(180deg, rgba(231,111,138,0.12), rgba(231,111,138,0.04));padding:1.25rem 0;border-bottom:none}
+        .site-top{display:flex;align-items:center;justify-content:space-between;gap:1rem}
+        .logo{font-weight:900;color:var(--accent-2);font-size:2rem;letter-spacing:0.4px}
+        nav a{color:var(--muted);text-decoration:none;margin-left:1rem;font-weight:600;padding:6px 8px;border-radius:8px}
+        nav a:hover{color:var(--accent-2);background:rgba(231,111,138,0.06)}
+        .nav{display:flex;align-items:center}
 
-        header p {
-            font-size: 1.2rem;
-            margin-top: 10px;
-        }
-
-        /* Container for Main Content */
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 2rem;
-        }
+        /* Hero */
+        .hero{background:linear-gradient(180deg, rgba(255,255,255,0.6), rgba(255,255,255,0.4));padding:3.25rem;border-radius:16px;display:flex;flex-direction:column;align-items:center;text-align:center;margin:1.25rem 0}
+        .hero h1{font-size:2.25rem;margin:0 0 0.5rem;color:var(--text);letter-spacing:-0.02em}
+        .hero p{margin:0 0 1rem;color:var(--muted);max-width:720px}
+        .cta{display:inline-block;background:var(--accent);color:#fff;padding:0.8rem 1.25rem;border-radius:999px;text-decoration:none;font-weight:600;box-shadow:0 6px 18px rgba(179,122,0,0.18);transition:transform .18s ease}
+        .cta:hover{transform:translateY(-3px)}
 
         /* Product Grid */
-        .product-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
+        .product-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.25rem;margin-top:1.5rem}
 
-        /* Product Card Styling */
-        .product-card {
-            background: var(--white);
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-            transition: transform 0.3s ease;
-            border: 2px solid transparent;
-        }
+        .product-card{background:var(--panel);border-radius:var(--radius);overflow:hidden;position:relative;box-shadow:0 8px 30px rgba(15,23,42,0.06);transition:transform .22s ease, box-shadow .22s ease;border:1px solid rgba(15,23,42,0.04)}
+        .product-card:hover{transform:translateY(-6px);box-shadow:0 18px 40px rgba(15,23,42,0.08)}
 
-        .product-card:hover {
-            transform: translateY(-5px);
-            border-color: var(--primary-pink);
-        }
+        .product-img{width:100%;height:320px;object-fit:cover;display:block}
 
-        .product-image-placeholder {
-            width: 100%;
-            height: 250px;
-            background-color: #ddd;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: #666;
-            font-size: 0.9rem;
-        }
-        
-        /* If you use real images, use this class instead of the placeholder div */
-        .product-img {
-            width: 100%;
-            height: 250px;
-            object-fit: contain;
-        }
+        .product-info{padding:1rem 1rem 1.25rem}
+        .product-title{font-size:1.05rem;margin:0 0 0.35rem;color:var(--text);font-weight:600}
+        .product-desc{font-size:0.9rem;color:var(--muted);margin:0 0 0.75rem}
 
-        .product-info {
-            padding: 1.5rem;
-            text-align: center;
-        }
+        .price-row{display:flex;align-items:center;justify-content:space-between;gap:0.5rem}
+        .price{font-weight:700;color:var(--accent-2)}
+        .buy-btn{background:linear-gradient(90deg,var(--accent-2),var(--accent));color:#fff;padding:0.55rem 0.9rem;border-radius:999px;text-decoration:none;font-weight:700;font-size:0.95rem;box-shadow:0 8px 20px rgba(231,111,138,0.14)}
 
-        .product-title {
-            color: var(--dark-pink);
-            font-size: 1.5rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .product-desc {
-            font-size: 0.95rem;
-            color: #666;
-            margin-bottom: 1rem;
-        }
-
-        .price {
-            font-size: 1.25rem;
-            font-weight: bold;
-            color: var(--dark-pink);
-            display: block;
-            margin-bottom: 1rem;
-        }
-
-        .buy-btn {
-            background-color: var(--primary-pink);
-            color: var(--white);
-            padding: 10px 20px;
-            border: none;
-            border-radius: 25px;
-            font-size: 1rem;
-            cursor: pointer;
-            text-decoration: none;
-            transition: background-color 0.3s;
-        }
-
-        .buy-btn:hover {
-            background-color: var(--dark-pink);
-        }
+        /* Price badge */
+        .badge{position:absolute;top:12px;right:12px;background:rgba(255,255,255,0.9);padding:0.4rem 0.55rem;border-radius:999px;font-weight:700;color:var(--text);font-size:0.9rem;border:1px solid rgba(15,23,42,0.05)}
 
         /* Footer */
-        footer {
-            text-align: center;
-            padding: 2rem;
-            background-color: var(--dark-pink);
-            color: var(--white);
-            margin-top: 3rem;
-        }
+        footer{margin-top:0rem;padding:0.5rem 0;color:var(--muted);text-align:center;font-size:0.95rem}
 
+        /* Responsive adjustments */
+        @media (min-width:900px){
+            .hero{flex-direction:row;align-items:center;text-align:left;padding:3.75rem}
+            .hero .hero-text{flex:1;padding-right:2rem}
+        }
     </style>
 </head>
 <body>
 
     <header>
-        <h1>Ellie's Slime Company</h1>
-        <p>Premium Homemade Slimes for Everyone!</p>
+        <div class="container">
+            <div class="site-top">
+                <div class="logo">Ellie's Slime Company</div>
+                <nav class="nav">
+                </nav>
+            </div>
+        </div>
     </header>
 
     <div class="container">
-        <h2 style="text-align: center; color: var(--dark-pink); margin-bottom: 2rem;">Ellie's Collection</h2>
         
         <div class="product-grid">
 
             <div class="product-card">
                 <img src="cotton-candy-4.jpg" alt="Cotton Candy Slime" class="product-img">
+                <div class="badge">$3.00</div>
                 <div class="product-info">
                     <h3 class="product-title">Cotton Candy Dream</h3>
                     <p class="product-desc">The Cotton Candy Dream Slime is a fluffy, cloud slime with foam gumballs and a pink swirl.</p>
-                    <span class="price">$3.00</span>
+                    <div class="price-row">
+                        <span class="price">$3.00</span>
+                        <a class="buy-btn" href="#">Add to cart</a>
+                    </div>
                 </div>
             </div>
 
             <div class="product-card">
                 <img src="orange-crush-4.jpg" alt="Mint Chip Slime" class="product-img">
+                <div class="badge">$3.00</div>
                 <div class="product-info">
                     <h3 class="product-title">Orange Soda Crush</h3>
                     <p class="product-desc">The Orange Soda Crush Slime is a glossy and sensory focused slime that mimics the perfect look of a fresh fizzy soda.</p>
-                    <span class="price">$3.00</span> 
+                    <div class="price-row">
+                        <span class="price">$3.00</span>
+                        <a class="buy-btn" href="#">Add to cart</a>
+                    </div>
                 </div>
             </div>
 
             <div class="product-card">
                 <img src="carnival-fun-5.jpg" alt="Ocean Slime" class="product-img">
+                <div class="badge">$3.00</div>
                 <div class="product-info">
                     <h3 class="product-title">Carnival Fun Slime</h3>
                     <p class="product-desc">Carnival Fun Slime is a "Party in a jar". With a blue and pink swirl and little glitter beads.</p>
-                    <span class="price">$3.00</span>
+                    <div class="price-row">
+                        <span class="price">$3.00</span>
+                        <a class="buy-btn" href="#">Add to cart</a>
+                    </div>
                 </div>
             </div>
 
             <div class="product-card">
                 <a href="blue-slushie-crunch.jpg"><img src="blue-slushie-crunch.jpg" alt="Candy Cane Slime" class="product-img"></a>
+                <div class="badge">$3.00</div>
                 <div class="product-info">
                     <h3 class="product-title">Blue Slushie Crunch</h3>
                     <p class="product-desc"> The Blue Slushie Crunch is a blue slime that has a glossy texture and little foam beads.</p>
-                    <span class="price">$3.00</span>
+                    <div class="price-row">
+                        <span class="price">$3.00</span>
+                        <a class="buy-btn" href="#">Add to cart</a>
+                    </div>
                 </div>
             </div>
 
             <div class="product-card">
                 <a href="galaxy-slime.jpg"><img src="galaxy-slime.jpg" alt="Peach Slime" class="product-img"></a>
+                <div class="badge">$3.00</div>
                 <div class="product-info">
                     <h3 class="product-title">Galaxy Stars</h3>
                     <p class="product-desc"> The Galaxy Stars has a deep purple color with a smooth texture and silver glitter.</p>
-                    <span class="price">$3.00</span>
+                    <div class="price-row">
+                        <span class="price">$3.00</span>
+                        <a class="buy-btn" href="#">Add to cart</a>
+                    </div>
                 </div>
             </div>
 
             <div class="product-card">
                 <a href="original-slime-2.jpg"><img src="original-slime-2.jpg" alt="Lemon Slime" class="product-img"></a>
+                <div class="badge">$3.00</div>
                 <div class="product-info">
                     <h3 class="product-title">Original</h3>
                     <p class="product-desc">The Original Slime has a marshmallow texture with a thick and pillowy look.</p>
-                    <span class="price">$3.00</span>
+                    <div class="price-row">
+                        <span class="price">$3.00</span>
+                        <a class="buy-btn" href="#">Add to cart</a>
+                    </div>
                 </div>
             </div>
 
